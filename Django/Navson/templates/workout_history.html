@@ -1,0 +1,57 @@
+{% extends "index.html"%} {% block content%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>workout History</title>
+    <style>
+        .centrealign {
+            text-align: center;
+        }
+        
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="centrealign">
+        <h1>workout History</h1>
+    </div>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Workout Duration</th>
+            <th>Exercise Type</th>
+        </tr>
+        {% for user in data %}
+        {% if user.username in '{{name}}' %} 
+        <tr>
+            <td>{{ user.date }}</td>
+            <td>{{ user.workout_time }}</td>
+            <td>{{ user.exercise }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+</body>
+
+</html>
+{% endblock %}

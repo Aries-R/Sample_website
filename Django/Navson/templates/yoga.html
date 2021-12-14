@@ -1,0 +1,96 @@
+{% extends "index.html"%} {% block content%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga</title>
+    <style>
+        .vid-align {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        
+        .centeralign {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        
+        .container {
+            display: flex;
+            flex-flow: column wrap;
+            width: 90%;
+            height: 600px;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .menu {
+            flex: 0 0 100%;
+            border-radius: 10px;
+        }
+        
+        .child1 {
+            width: 60%;
+            height: 100vh;
+            text-align: center;
+        }
+        
+        .child2 {
+            width: 40%;
+            padding: 30px;
+            height: 100vh;
+            margin: 50px;
+            background-color: white;
+        }
+        
+        .start {
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            border-radius: 10px;
+            padding: 3px;
+            background-color: limegreen;
+            margin: 0 5px;
+        }
+        
+        .end {
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            border-radius: 10px;
+            padding: 3px;
+            background-color: red;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="child1">
+            <img src="{% url 'yoga' %}" width="700" height="580">
+        </div>
+        <div class="child2">
+        </div>
+    </div>
+    <div class="centeralign">
+        <div>
+            <form action="start" , method="post">
+                {% csrf_token %}
+                <button class="start" type=" submit ">Start</button>
+            </form>
+        </div>
+        <div>
+            <form action="end " , method="post ">
+                {% csrf_token %}
+                <button class="end" type=" submit ">End</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}

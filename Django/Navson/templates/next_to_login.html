@@ -1,0 +1,126 @@
+{% extends "index.html"%} {% block content%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bicep</title>
+    <style>
+        .vid-align {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        
+        .centeralign {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        
+        .container {
+            display: flex;
+            flex-flow: column wrap;
+            width: 90%;
+            height: 600px;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .menu {
+            flex: 0 0 100%;
+            border-radius: 10px;
+        }
+        
+        .header {
+            flex: 0 0 20%;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .body {
+            flex: 0 0 50%;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .footer {
+            flex: 0 0 20%;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .start {
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            border-radius: 10px;
+            padding: 3px;
+            background-color: limegreen;
+            margin: 0 5px;
+        }
+        
+        .end {
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            border-radius: 10px;
+            padding: 3px;
+            background-color: red;
+            margin: 0 5px;
+        }
+        
+        #videoElement {
+            width: 700px;
+            height: 580px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="menu">
+            <video autoplay="true" id="videoElement"></video>
+        </div>
+        <div class="header">
+            Header
+        </div>
+        <br>
+        <div class="body">
+            Body
+        </div>
+        <br>
+        <div class="footer">
+            Footer
+        </div>
+        <br>
+    </div>
+    <div class="centeralign">
+        <div>
+            <form action="startworkout" , method="get">
+                <button class="start" type=" submit ">Let Start Exercise</button>
+            </form>
+        </div>
+        <div>
+        </div>
+
+    </div>
+    <script>
+        var video = document.querySelector("#videoElement");
+
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({
+                    video: true
+                })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                })
+                .catch(function(err0r) {
+                    console.log("Something went wrong!");
+                });
+        }
+    </script>
+</body>
+
+</html>
+{% endblock %}
